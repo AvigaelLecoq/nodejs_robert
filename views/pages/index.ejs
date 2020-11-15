@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Laboratoire</title>
+</head>
+
+<body>
+
+    <div id="principal" class="col-lg-6 offset-md-3">
+
+
+        <h1>Laboratoire AVI</h1>
+
+        <% if(locals.flash && locals.flash.error) { %>
+            <div class="alert alert-danger">
+                <%=flash.error %>
+            </div>
+            <% } %>
+
+                <form action="/" method="POST" class="form-inline">
+                    <input type="search" id="search" class="form-control mr-sm-2" name="search">
+                    <input type="submit" name="btnSearch" id="btnSearch" class="form-control btn btn-info my-2 my-sm-0" value="Rechercher">
+                </form>
+
+                <% if(locals.listPatient) { %>
+                    <div class="content" id="listPatient">
+                        <table class="table table-hover">
+                            <tbody>
+                                <% for (patient of listPatient) {%>
+                                    <tr>
+                                        <td>
+                                            <%=patient.nomPatient %>
+                                        </td>
+                                        <td>
+                                            <%=patient.prenomPatient %>
+                                        </td>
+                                        <td>
+                                            <a href="patient/<%=patient.idPatient %> "><button class="btn btn-primary">Voir</button></a>
+                                        </td>
+
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <% } %>
+
+
+    </div>
+
+
+</body>
+
+</html>

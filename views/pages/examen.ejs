@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Laboratoire</title>
+</head>
+
+<body>
+
+    <div id="principal" class="col-lg-6 offset-md-3">
+
+
+        <h1>Laboratoire AVI</h1>
+
+        <% if(locals.flash && locals.flash.error) { %>
+            <div class="alert alert-danger">
+                <%=flash.error %>
+            </div>
+            <% } %>
+
+                <% if(locals.lexamen) { %>
+                    <div class="content" id="lexamen">
+                        <form action="/patient/examen" method="POST">
+                            <p>
+                                Examen de
+                                <%=lexamen[0].nomPatient %>
+                                    <%=lexamen[0].prenomPatient %>
+                            </p>
+                            <table class="table table-hover">
+                                <tbody>
+                                    <% for (examen of lexamen) {%>
+                                        <tr>
+                                            <td>
+                                                <%=examen.libelleExamen %>
+                                            </td>
+                                            <td>
+                                                <%=examen.date %>
+                                            </td>
+                                        </tr>
+                                        <input type="hidden" name="idExamen" value="<%=examen.idConsultation %>">
+                                        <% } %>
+                                </tbody>
+                            </table>
+
+                            <div class="container">
+                                <p>Commentaire :</p>
+                                <textarea name="texteExamen" id="texteExamen" cols="70" rows="10"></textarea>
+
+
+                                <input type="submit" class="btn btn-success" value="Enregistrer" name="btnExamen" id="btnExamen">
+                            </div>
+                        </form>
+                    </div>
+                    <% } %>
+
+
+    </div>
+
+
+</body>
+
+</html>

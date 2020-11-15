@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Laboratoire</title>
+</head>
+
+<body>
+
+    <div id="principal" class="col-lg-6 offset-md-3">
+
+
+        <h1>Laboratoire AVI</h1>
+
+        <% if(locals.flash && locals.flash.error) { %>
+            <div class="alert alert-danger">
+                <%=flash.error %>
+            </div>
+            <% } %>
+
+                <% if(locals.listExamen) { %>
+                    <div class="content" id="listExamen">
+                        <p>
+                            Liste d'examens de
+                            <%=listExamen[0].nomPatient %>
+                                <%=listExamen[0].prenomPatient %>
+                        </p>
+                        <table class="table table-hover">
+                            <tbody>
+                                <% for (examen of listExamen) {%>
+                                    <tr>
+                                        <td>
+                                            <%=examen.libelleExamen %>
+                                        </td>
+                                        <td>
+                                            <%=examen.date %>
+                                        </td>
+                                        <td>
+                                            <a href="examen/<%=examen.idConsultation %> "><button class="btn btn-primary">Voir</button></a>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <% } %>
+
+
+    </div>
+
+
+</body>
+
+</html>

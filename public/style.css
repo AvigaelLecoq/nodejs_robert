@@ -1,0 +1,11 @@
+#principal {}
+
+#listPatient,
+#listExamen,
+#lexamen {
+    margin-top: 10px;
+}
+
+#btnExamen {
+    display: block;
+}
